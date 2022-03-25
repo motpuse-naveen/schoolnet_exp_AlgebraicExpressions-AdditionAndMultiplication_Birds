@@ -105,8 +105,6 @@ function newQuestion() {
 		this[birdNameArray[i] + "Set_mc"]._visible = false
 		this[birdNameArray[i] + "Set_mc"]._x = 0
 		this[birdNameArray[i] + "Set_mc"]._y = 0
-
-		
 	}
 	
 	clsUtils.randomizeArray(birdOrderArray)	
@@ -134,12 +132,10 @@ function newQuestion() {
 	valueOfExpr = 0
 	fillExprCoeffArray()
 	for (var i:Number = 0; i <noOfTerms; i++) {
-		
 		if (exprCoeffArray[i] > 1) {
 			mStr = mStr + exprCoeffArray[i] 
 		}
 		mStr = mStr + birdVarNameArray[birdOrderArray[exprOrderArray[i]]]
-		
 		valueOfExpr = valueOfExpr + exprCoeffArray[i]* birdCountArray[birdOrderArray[exprOrderArray[i]]]
 		mStr = mStr + " + "
 	}
