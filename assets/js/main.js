@@ -13,7 +13,7 @@ var ActivityShell = (function () {
         "height": window.innerHeight + "px"
       })
       var deviceType = ActivityShell.DeviceType();
-      //alert("dt: " + deviceType + ", wdt: " + window.screen.width + ", ht: " + window.screen.height )
+      //alert("dt: " + deviceType + ", wdt: " + window.screen.width + ", ht: " + window.screen.height)
       $(".wrapper").attr("device", deviceType);
       if (this.IsIOSDevice()) {
         $("body").attr("platform", "ios")
@@ -47,7 +47,7 @@ var ActivityShell = (function () {
           $(".container-so.main").show();
           ActivityShell.AdjustContainerHeight();
           ScreenSplitter.InitSplitter();
-          GuidedTour.Init();
+          //GuidedTour.Init();
           EvaluateAlgebraicExpressions.LaunchActivity();
           /* Scale Spring to fit */
           ScreenSplitter.ScaleToFit($("#split-0"));
@@ -62,6 +62,9 @@ var ActivityShell = (function () {
             hammerItScrollableContent(document.querySelector(".zoom2"));
             zoom2 = "zoom2";
           }
+          setTimeout(function () {
+            GuidedTour.Init();
+          }, 500);
         }, 1000)
       }
       else {
@@ -69,7 +72,7 @@ var ActivityShell = (function () {
         $(".container-so.main").show();
         this.AdjustContainerHeight();
         ScreenSplitter.InitSplitter();
-        GuidedTour.Init();
+        //GuidedTour.Init();
         EvaluateAlgebraicExpressions.LaunchActivity();
         /* Scale Spring to fit */
         ScreenSplitter.ScaleToFit($("#split-0"));
@@ -84,6 +87,9 @@ var ActivityShell = (function () {
           hammerItScrollableContent(document.querySelector(".zoom2"));
           zoom2 = "zoom2";
         }
+        setTimeout(function () {
+          GuidedTour.Init();
+        }, 500);
       }
     },
     AdjustContainerHeight: function () {
@@ -119,8 +125,14 @@ var ActivityShell = (function () {
       $(".wrapper").removeClass("small-height-landscape").removeClass("extra-small-height-landscape")
       var bodyHt = $("body").height()
       bodyHt = Number(bodyHt)
+      //alert(bodyHt);
       if (bodyHt < 440) {
-        $(".wrapper").addClass("small-height-landscape")
+        if (bodyHt < 290) {
+          $(".wrapper").addClass("extra-small-height-landscape")
+        }
+        else {
+          $(".wrapper").addClass("small-height-landscape")
+        }
       }
     },
     DeviceType: function () {
@@ -233,7 +245,7 @@ var ActivityShell = (function () {
       var deviceType = this.DeviceType();
       if (deviceType == "desktop") {
         this.AdjustContainerHeight();
-        ScreenSplitter.InitSplitter(null,true);
+        ScreenSplitter.InitSplitter(null, true);
         if ($(".popup").is(":visible")) {
           this.AdjustSplitPanelsOnOpenPopup($(".popup:visible"));
         }

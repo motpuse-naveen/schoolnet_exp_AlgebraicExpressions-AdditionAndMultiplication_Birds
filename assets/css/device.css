@@ -346,7 +346,7 @@
     background: #000;
   }
   .container-so.main .exp_header .header .leftpan {
-    min-width: 380px;
+    min-width: 338px;
   }
 }
 @media screen and (orientation: portrait) and (max-device-width: 610px) {
