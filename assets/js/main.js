@@ -71,7 +71,12 @@ var ActivityShell = (function () {
       else {
         
         this.AdjustContainerHeight();
-        ScreenSplitter.InitSplitter();
+        if(window.screen.width<1024){
+          ScreenSplitter.InitSplitter();
+        }
+        else{
+          ScreenSplitter.InitSplitter(null, true);
+        }
         //GuidedTour.Init();
         EvaluateAlgebraicExpressions.LaunchActivity();
         /* Scale Spring to fit */
@@ -150,6 +155,13 @@ var ActivityShell = (function () {
       }
       else if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
         return "mobile";
+      }
+      else{
+        if (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2) {
+          if (window.screen.availWidth < 1024 || window.screen.availHeight < 1024) {
+            return "tablet"
+          }
+        }
       }
       return "desktop";
     },
