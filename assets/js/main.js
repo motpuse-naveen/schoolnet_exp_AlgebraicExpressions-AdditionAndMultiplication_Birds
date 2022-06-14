@@ -36,6 +36,8 @@ var ActivityShell = (function () {
     },
     LaunchActivity: function () {
       $(".wrapper").addClass("activity");
+      $(".container-so.launch").hide();
+      $(".container-so.main").show();
       var deviceType = ActivityShell.DeviceType();
       var Android = /(android)/i.test(navigator.userAgent);
       if (deviceType == "mobile" && Android) {
@@ -43,8 +45,7 @@ var ActivityShell = (function () {
         generatePreloader();
         setTimeout(function () {
           $(".preloader").remove();
-          $(".container-so.launch").fadeOut();
-          $(".container-so.main").show();
+          
           ActivityShell.AdjustContainerHeight();
           ScreenSplitter.InitSplitter();
           //GuidedTour.Init();
@@ -68,8 +69,7 @@ var ActivityShell = (function () {
         }, 1000)
       }
       else {
-        $(".container-so.launch").fadeOut();
-        $(".container-so.main").show();
+        
         this.AdjustContainerHeight();
         ScreenSplitter.InitSplitter();
         //GuidedTour.Init();
@@ -139,6 +139,7 @@ var ActivityShell = (function () {
       /* This function needs changes in device detection logic 
       below code is not working for ipad it returns desktop */
       const ua = navigator.userAgent;
+      //alert(navigator.userAgent)
       if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
         if (window.screen.availWidth < 530 || window.screen.availHeight < 530) {
           return "mobile";
