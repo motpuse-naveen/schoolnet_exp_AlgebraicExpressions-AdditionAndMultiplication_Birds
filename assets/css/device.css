@@ -410,6 +410,9 @@
   /*BOB Style*/
 
   /*END BOB Style*/
+  .wrapper[device="tablet"] .container-so.main .exp_header .header .leftpan{
+    min-width: 340px;
+  }
   .wrapper[device="tablet"] .container-so.main .exp_header .header .head-pan-container {
     font-size: 15px;
   }
@@ -431,6 +434,7 @@
   .activity-page-expl-logo {
     padding: 13px 10px 13px 16px;
   }
+  
 }
 
 @media screen and (orientation: landscape) and (max-device-height: 610px) {
