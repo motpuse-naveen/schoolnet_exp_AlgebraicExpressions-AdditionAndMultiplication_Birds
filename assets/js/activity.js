@@ -120,7 +120,9 @@ function noOfDigits_cmb_Listener(id) {
   }
 
   noOfDigits = value;
-  resetExperiment();
+  // resetExperiment();
+  newQuestion();
+ 
 }
 
 $(".maxTerms_cont .btn_minus").on("click", function () {
@@ -155,7 +157,8 @@ function maxTerms_cmb_Listener(id) {
   }
 
   maxTerms = value;
-  resetExperiment();
+  newQuestion();
+  // resetExperiment();
 }
 
 function resetExperiment() {
@@ -163,10 +166,10 @@ function resetExperiment() {
   curQtnNo = 1;
   totalQtns = 0;
   correctQtns = 0;
-  $(".score_txt").text("" + correctQtns + "/" + totalQtns);
+  //$(".score_txt").text("" + correctQtns + "/" + totalQtns);
   //$("#next_btn").hide();
   newQuestion();
-}
+} 
 
 function newQuestion() {
   $("#explain_mc").hide();
@@ -202,7 +205,7 @@ function newQuestion() {
   $("#numbInput_txt").val('');
   $("#numbInput_txt").removeAttr("disabled");
 
-  noOfTerms = parseInt(Math.random() * (maxTerms - 1)) + 2;
+  noOfTerms = parseInt((maxTerms - 1)) + 1;
   mStr = "";
   valueOfExpr = 0;
   fillExprCoeffArray()
@@ -250,6 +253,11 @@ $("#btn_reset").on("click", function () {
   resetExperiment();
   $("#next_btn").hide();
   $("#explain_btn").hide();
+  mStr = "";
+  curQtnNo = 1;
+  totalQtns = 0;
+  correctQtns = 0;
+	$(".score_txt").text("" + correctQtns + "/" + totalQtns);
 });
 
 $("#OK_btn").on("click", function () {
